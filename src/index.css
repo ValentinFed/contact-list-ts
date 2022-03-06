@@ -26,6 +26,10 @@ code {
   margin: 10px 20px 0 0;
 }
 
+.selected__item {
+  outline: 2px solid rgb(0, 109, 128);
+}
+
 .person-info:hover {
   padding: 30px;
   border: 2px solid pink;

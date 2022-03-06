@@ -39,14 +39,26 @@ function App() {
   const fetchNextBatch = () => {
     setPage(page + 1)
   }
+  const selectCard = (id:string) => {
+    setSelected([...selected, ...data.filter(item => item.id === id)])
+    setData([...data.filter(item => item.id !== id)])
+  }
+  const deselectCard = (id:string) => {
+    setSelected([...selected.filter(item => item.id !== id)])
+    setData([...selected.filter(item => item.id === id), ...data])
+  }
 
   return (
     <div className="App">
       <div className="selected">Selected contacts: {selected.length}</div>
       <div className="list">
+      {selected.map((personInfo) => (
+          // @ts-ignore
+          <PersonInfo key={personInfo.id} data={personInfo} deselectCard={deselectCard}/>
+        ))}
         {data.map((personInfo) => (
           // @ts-ignore
-          <PersonInfo key={personInfo.id} data={personInfo} />
+          <PersonInfo key={personInfo.id} data={personInfo} selectCard={selectCard}/>
         ))}
         {isLoading && <Loading/>}
         {error && <Error error={error}/>}
