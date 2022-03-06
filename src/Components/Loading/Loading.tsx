@@ -2,7 +2,7 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div>Loading</div>
+    <div style={{padding: "32px"}}>...Loading</div>
   )
 }
 

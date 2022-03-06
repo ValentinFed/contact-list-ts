@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {FC} from 'react'
 
-const Error = () => {
+interface IError {
+  error: string;
+}
+
+const Error:FC<IError> = ({error}) => {
   return (
-    <div>Error</div>
+    <div style={{padding: "32px", color: "red"}}><p>{error}</p></div>
   )
 }
 
