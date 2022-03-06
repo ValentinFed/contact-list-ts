@@ -6,8 +6,6 @@ function App() {
   const [data, setData] = React.useState([]);
   const [selected, setSelected] = React.useState([]);
 
-  //  TODO fetch contacts using apiData function, handle loading and error states
-
   return (
     <div className="App">
       <div className="selected">Selected contacts: {selected.length}</div>
