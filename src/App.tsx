@@ -16,6 +16,7 @@ function App() {
   const [selected, setSelected] = useState<User[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     async function FetchUsers() {
@@ -33,7 +34,11 @@ function App() {
       }
     }
     FetchUsers()
-  }, [])
+  }, [page])
+
+  const fetchNextBatch = () => {
+    setPage(page + 1)
+  }
 
   return (
     <div className="App">
@@ -45,6 +50,7 @@ function App() {
         ))}
         {isLoading && <Loading/>}
         {error && <Error error={error}/>}
+        <button onClick={() => fetchNextBatch()}> {error ? 'Refetch' : 'Load more' }</button>
       </div>
     </div>
   );
